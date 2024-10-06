@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Russo+One&display=swap');
+
+:root {
+    --primary-color-text: #A9A9A9;
+    --primary-color-headlines: #D5BFDF;
+    --primary-color-buttons: #FDFBD2;
+    --primary-color-background: #fcf7f7;
+    --primary-color-text-dark: #7A7777;
+}
+
+* {
+    font-family: "Roboto", sans-serif;
+}
+
+.menu {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+}
+
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    width: 65px;
+    height: 58px;
+    justify-content: space-between;
+    align-items: center;
+    border: 3px solid var(--primary-color-headlines);
+    border-radius: 10px;
+    background-color: var(--primary-color-buttons);
+    margin: 15px;
+    justify-self: end;
+}
+
+.line {
+    width: 39px;
+    height: 5px;
+    background-color: var(--primary-color-headlines);
+    border-radius: 10px;
+    margin: 7px 0;
+}
+
+.menu-panel {
+    position: absolute;
+    right: -264px;
+    top: 0;
+    width: 264px;
+    height: 519px;
+    background-color: var(--primary-color-buttons);
+    font-size: 32px;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 32px;
+    box-sizing: border-box;
+    transition: right 1s ease-in-out;
+}
+
+.menu-panel ul {
+    list-style: none;
+    padding: 0;
+}
+
+.menu-panel ul li {
+    margin-bottom: 32px;
+}
+
+.menu-panel ul li a {
+    color: var(--primary-color-text-dark);
+    text-decoration: none;
+}
+
+.menu-panel.active {
+    right: 0;
+}
