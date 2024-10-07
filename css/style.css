@@ -12,11 +12,16 @@
     font-family: "Roboto", sans-serif;
 }
 
+body {
+    overflow-x: hidden;
+}
+
 .menu {
     display: grid;
     width: 100%;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
+    overflow: hidden;
 }
 
 .hamburger {
@@ -72,4 +77,17 @@
 
 .menu-panel.active {
     right: 0;
+}
+
+.frame {
+    width: 100%;
+    text-align: center;
+}
+
+.frame img {
+    display: inline-block;
+    width: 296px;
+    height: 165px;
+    object-fit: cover;
+    margin: 22px;
 }

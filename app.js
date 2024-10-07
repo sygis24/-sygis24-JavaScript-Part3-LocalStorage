@@ -1,6 +1,21 @@
 const btnHamburger = document.querySelector('.hamburger'); // Määrame muutujale btnHamburger HTML-element, mille ID on hamburger
 const menuPanel = document.querySelector('.menu-panel'); // Määrame muutujale menuPanel HTML-element, mille klass on menu-panel
 const menuLinks = document.querySelectorAll('.menu-panel a'); // Määrame muutujale menuLinks kõik HTML-sildid, mis asuvad menüü paneeli sees
+const frameImage = document.querySelector('#frame');
+const images = ['1.webp', '2.webp', '3.webp','4.webp', '5.webp', '6.webp'];
+
+let currentImageIndex = 0;
+
+frameImage.addEventListener('click', ()=> {
+    currentImageIndex++; //+1
+
+    if(currentImageIndex >= 5) {
+        currentImageIndex = 0;
+    }
+    
+    frameImage.src = 'images/' + images[currentImageIndex];
+    
+});
 
 
 btnHamburger.addEventListener('click', ()=> { // Lisame btnHamburger nupule sündmuse jälgimise, mis reageerib klikkimisele
