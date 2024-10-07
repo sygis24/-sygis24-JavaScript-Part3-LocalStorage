@@ -1,20 +1,20 @@
 const btnHamburger = document.querySelector('.hamburger'); // Määrame muutujale btnHamburger HTML-element, mille ID on hamburger
 const menuPanel = document.querySelector('.menu-panel'); // Määrame muutujale menuPanel HTML-element, mille klass on menu-panel
 const menuLinks = document.querySelectorAll('.menu-panel a'); // Määrame muutujale menuLinks kõik HTML-sildid, mis asuvad menüü paneeli sees
-const frameImage = document.querySelector('#frame'); // Valime HTML elemendi, millel on id 'frame'
-const images = ['1.webp', '2.webp', '3.webp','4.webp', '5.webp', '6.webp']; // Piltide nimede massiiv
+const frameImage = document.querySelector('#frame');
+const images = ['1.webp', '2.webp', '3.webp', '4.webp', '5.webp', '6.webp' ];
 
-let currentImageIndex = 0; // Hoiab praegu valitud pildi indeksit, alustades esimesest (indeks 0)
+let currentImageIndex = 0;
 
-frameImage.addEventListener('click', ()=> { // Lisab sündmuse kuulaja, mis käivitab funktsiooni, kui pildile klikitakse
-    currentImageIndex++; // Suurendab indeksi väärtust ühe võrra
+frameImage.addEventListener('click', () => {
+    currentImageIndex++; //+1
 
-    if(currentImageIndex >= 5) { // Kui indeks on suurem või võrdne 5-ga (viimane indeks), siis...
-        currentImageIndex = 0; // ...muudab indeksi tagasi 0-ks (algusesse)
+    if(currentImageIndex >= 5) {
+        currentImageIndex = 0;
     }
 
-    frameImage.src = 'images/' + images[currentImageIndex]; // Muudab pildi 'src' atribuuti, et näidata järgmist pilti
-    
+    frameImage.src = 'images/' + images[currentImageIndex];
+
 });
 
 
