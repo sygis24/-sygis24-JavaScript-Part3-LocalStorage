@@ -1,20 +1,62 @@
 const btnHamburger = document.querySelector('.hamburger'); // Määrame muutujale btnHamburger HTML-element, mille ID on hamburger
 const menuPanel = document.querySelector('.menu-panel'); // Määrame muutujale menuPanel HTML-element, mille klass on menu-panel
 const menuLinks = document.querySelectorAll('.menu-panel a'); // Määrame muutujale menuLinks kõik HTML-sildid, mis asuvad menüü paneeli sees
-const frameImage = document.querySelector('#frame');
-const images = ['1.webp', '2.webp', '3.webp', '4.webp', '5.webp', '6.webp' ];
+const frameImage = document.querySelector('#frame'); // Valime HTML elemendi, millel on id 'frame'
+const images = ['1.webp', '2.webp', '3.webp','4.webp', '5.webp', '6.webp']; // Piltide nimede massiiv
+const modal = document.querySelector('.modal'); // Valib Modal akna
+const btnOpenModal = document.querySelector('#btn-open-form'); // Valib nuppu vormi avamiseks
+const inputName = document.querySelector('#name'); //Valib nime sisendvälja
+const inputEmail = document.querySelector('#email'); // Valib e-posti sisendvälja
+const inputMessage = document.querySelector('#message'); // Valib sõnumi sisendvälja
+const contactForm = document.querySelector('#contact-form'); // Valib kontaktivormi
 
-let currentImageIndex = 0;
+contactForm.addEventListener('submit', (event)=> { // Lisame vormi esitamise ootamise
+    event.preventDefault(); // Peatab vormi vaikimisi esitamise
 
-frameImage.addEventListener('click', () => {
-    currentImageIndex++; //+1
+    const name = inputName.value; // Nime väärtus
+    const email = inputEmail.value; // E-posti väärtus
+    const message = inputMessage.value;  // Sõnumi väärtus  
 
-    if(currentImageIndex >= 5) {
-        currentImageIndex = 0;
+    //object literal
+
+    const formData = { // Loome objekti, mis sisaldab vormi andmeid
+        userName: name, // Kasutaja nimi
+        userEmail: email,  // Kasutaja e-post
+        userMessage: message // Kasutaja sõnum
     }
 
-    frameImage.src = 'images/' + images[currentImageIndex];
+    localStorage.setItem("name", JSON.stringify(formData.userName)); // Salvestame nime
+    localStorage.setItem("email", JSON.stringify(formData.userEmail)); // Salvestame e-posti
+    localStorage.setItem("message", JSON.stringify(formData.userMessage)); // Salvestame sõnumi
 
+});
+
+
+btnOpenModal.addEventListener('click', () => {
+    modal.style.display = 'block';
+});
+
+window.onclick = (event) => {
+    if(event.target == modal) {
+        modal.style.display = 'none';
+    }
+}
+
+
+
+let currentImageIndex = 0; // Hoiab praegu valitud pildi indeksit, alustades esimesest (indeks 0)
+
+frameImage.addEventListener('click', ()=> { // Lisab sündmuse kuulaja, mis käivitab funktsiooni, kui pildile klikitakse
+    currentImageIndex++; // Suurendab indeksi väärtust ühe võrra
+
+    if(currentImageIndex >= 6) { // Kui indeks on suurem või võrdne 5-ga (viimane indeks), siis...
+        currentImageIndex = 0; // ...muudab indeksi tagasi 0-ks (algusesse)
+    }
+
+    //array length
+
+    frameImage.src = 'images/' + images[currentImageIndex]; // Muudab pildi 'src' atribuuti, et näidata järgmist pilti
+    
 });
 
 
